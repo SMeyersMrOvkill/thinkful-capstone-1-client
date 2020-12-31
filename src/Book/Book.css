@@ -1,0 +1,9 @@
+.Book {
+    margin-top: 10px;
+    background-color: black;
+    color: white;
+    width: 750px;
+    border-radius: 15%;
+    justify-content: center;
+    text-align: center;
+}

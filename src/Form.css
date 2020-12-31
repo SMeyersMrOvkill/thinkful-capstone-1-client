@@ -1,0 +1,19 @@
+.Form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+form {
+    background-color: black;
+    color: white;
+    width: 300px;
+    padding: 10px;
+}
+
+.Form__form-group {
+    display: flex;
+    flex-direction: column;
+}

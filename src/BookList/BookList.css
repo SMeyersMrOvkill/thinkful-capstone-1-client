@@ -1,0 +1,19 @@
+.BookList {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.BookList__toolbar {
+    padding: 10px;
+    background-color: black;
+    border-radius: 15%;
+}
+
+.BookList__list {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
