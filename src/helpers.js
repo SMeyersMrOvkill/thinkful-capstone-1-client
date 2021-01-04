@@ -8,15 +8,6 @@ function findBook(books, id)
     });
 }
 
-function findBookGenre(genres, book) {
-    return genres.find((genre) => {
-        if(genre.id === book.genre) {
-            return genre;
-        }
-    });
-}
-
 export default {
-    findBook,
-    findBookGenre
+    findBook
 }

@@ -5,6 +5,11 @@ import './Book.css';
 
 class Book extends React.Component
 {
+    static defaultProps = {
+        book: {},
+        genre: {}
+    }
+    
     render() {
         return (
             <div className="Book">
@@ -24,7 +29,7 @@ class Book extends React.Component
                 </div>
                 <div className="Book__entry">
                     <strong>Genre: </strong>
-                    <span>{this.props.genre.name}</span>
+                    <span>{this.props.book.genre}</span>
                 </div>
                 <div className="Book__entry">
                     <p>{this.props.book.description}</p>

@@ -8,6 +8,10 @@ import '../Form.css';
 class EditBook extends React.Component
 {
 
+    static defaultProps = {
+        book: {},
+    };
+
     static contextType = BookContext;
 
     state = {
@@ -24,7 +28,7 @@ class EditBook extends React.Component
             value: ''
         },
         genre: {
-            value: 3,
+            value: 'Action',
         }
     }
 
@@ -32,7 +36,9 @@ class EditBook extends React.Component
         this.setState({
             name: {value: this.props.book.name},
             description: {value: this.props.book.description},
-            author: {value: this.props.book.author}
+            rating: {value: this.props.book.rating},
+            author: {value: this.props.book.author},
+            genre: {value: this.props.book.genre}
         })
     }
 
@@ -53,7 +59,7 @@ class EditBook extends React.Component
     }
 
     updateGenre(genre) {
-        this.setState({genre: {value: parseInt(genre)}});
+        this.setState({genre: {value: genre}});
     }
 
     submit = (e) => {
@@ -106,13 +112,10 @@ class EditBook extends React.Component
                                 <select 
                                 className="Form__form-control" 
                                 id="rating"
-                                onChange={e => this.updateRating(e.target.value)} >
+                                onChange={e => this.updateRating(e.target.value)} 
+                                defaultValue={this.props.book.rating}>
                                     {[1, 2, 3, 4, 5].map((itm) => {
-                                        if(itm === this.props.book.rating) {
-                                            return <option value={itm} selected>{itm}</option>
-                                        } else {
-                                            return <option value={itm}>{itm}</option>
-                                        }
+                                        return <option key={itm} value={itm}>{itm}</option>
                                     })}
                                 </select>
                             </div>
@@ -129,14 +132,34 @@ class EditBook extends React.Component
                                 <select 
                                 className="Form__form-control" 
                                 id="genre"
-                                onChange={e => this.updateGenre(e.target.value)} >
+                                onChange={e => this.updateGenre(e.target.value)} 
+                                defaultValue={this.props.book.genre}>
                                     {
-                                        genres.map((genre) => {
-                                            if(this.props.genre.id === genre.id) {
-                                                return <option value={genre.id} selected>{genre.name}</option>
-                                            } else {
-                                                return <option value={genre.id}>{genre.name}</option>
-                                            }
+                                        [
+                                            'Action',
+                                            'Adventure',
+                                            'Classic',
+                                            'Comic/Graphic Novel',
+                                            'Mystery/Detective',
+                                            'Fantasy',
+                                            'Science Fiction',
+                                            'Historical Fiction',
+                                            'Horror',
+                                            'Literary Fiction',
+                                            'Romance',
+                                            'Short Story',
+                                            'Suspense/Thriller',
+                                            'Women\'s Fiction',
+                                            'Biography/Autobiography',
+                                            'Cookbook',
+                                            'Essay',
+                                            'History',
+                                            'Memoir',
+                                            'Poetry',
+                                            'Self-Help',
+                                            'True Crime',
+                                        ].map((genre) => {
+                                            return <option key={genre} value={genre}>{genre}</option>
                                         })
                                     }
                                 </select>

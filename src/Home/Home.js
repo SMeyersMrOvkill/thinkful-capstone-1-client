@@ -7,7 +7,8 @@ class Home extends React.Component
         return (
             <div className="Home">
                 <h4>Welcome to Library!</h4>
-                <p>This app functions as a personal library. Please <Link to="/login">Log in</Link></p>
+                <p>This app functions as a personal library. 
+                Please <Link to="/login">Log in</Link> or <Link to="/register">Register</Link></p>
             </div>
         )
     }

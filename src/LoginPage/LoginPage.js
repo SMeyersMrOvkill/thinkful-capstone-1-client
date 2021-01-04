@@ -48,7 +48,7 @@ class LoginPage extends React.Component
           .then(res => {
             user_name.value = ''
             password.value = ''
-            this.props.history.push('/books');
+            window.location = '/books';
           })
           .catch(res => {
             this.setState({ error: res.error })

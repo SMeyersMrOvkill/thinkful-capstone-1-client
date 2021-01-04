@@ -14,55 +14,37 @@ import TokenService from './services/token-service';
 import './App.css';
 import LoginPage from './LoginPage/LoginPage';
 import Home from './Home/Home';
+import RegisterPage from './RegisterPage/RegisterPage';
 
 class App extends React.Component 
 {
   state = {
       error: '',
-      genres: [],
       books: [],
   }
 
   getAllBooks() {
-      //this.setState(dummyStore);
-      console.log('Starting mount...');
-      fetch(`${config.API_ENDPOINT}/genres`, {
-          method: 'GET',
-          headers: {
-              'content-type': 'application/json',
-              'authorization': `bearer ${TokenService.getAuthToken()}`
-          }
-      }).then(res => {
-        return res.json()
-      }).then(data => {
-            console.log(data);
+    fetch(`${config.API_ENDPOINT}/books`, {
+        method: 'GET',
+        headers: {
+            'content-type': 'application/json',
+            'authorization': `bearer ${TokenService.getAuthToken()}`
+        }
+        }).then(books => {
+        return books.json();
+        }).then(data => {
+            //console.log(data);
             if(data.hasOwnProperty('error')) {
                 this.setState({error: data.error});
-                if(data.error == "Unauthorized request") {
-                    this.setState({error: <Link to="/login">Log In</Link>})
+                if(data.error === "Unauthorized request") {
+                    this.setState({error: <LoginPage />})
                 }
             }
-            this.setState({genres: data});
-            fetch(`${config.API_ENDPOINT}/books`, {
-                method: 'GET',
-                headers: {
-                    'content-type': 'application/json',
-                    'authorization': `bearer ${TokenService.getAuthToken()}`
-                }
-                }).then(books => {
-                return books.json();
-                }).then(data => {
-                    console.log(data);
-                    if(data.hasOwnProperty('error')) {
-                        this.setState({error: data.error});
-                        if(data.error == "Unauthorized request") {
-                            this.setState({error: <Link to="/login">Log In</Link>})
-                        }
-                    }
-                    this.setState({books: data});
-                })
-            });
-  }
+            console.log({books: data});
+            //this.setState(books: [...data], error: {}});
+            this.setState({error: '', books: data});
+        })
+    }
 
     componentDidMount() {
         this.getAllBooks();
@@ -92,7 +74,6 @@ class App extends React.Component
             },
             body: JSON.stringify(book)
         }).then(resp => resp.json()).then(data => {
-            console.log(data);
             window.location = "/books";
             this.getAllBooks();
         });
@@ -118,13 +99,13 @@ class App extends React.Component
             {this.state.error !== '' ? this.state.error : 
           <BookContext.Provider value={{
               books: this.state.books,
-              genres: this.state.genres,
               updateBook: this.updateBook,
               addBook: this.addBook,
               deleteBook: this.deleteBook
           }}>
                 <Route exact path="/" component={Home} />
                 <Route exact path="/login" component={LoginPage} />
+                <Route exact path="/register" component={RegisterPage} />
                 <Route exact path="/books/add" component={AddBook} />
                 <Route exact path="/books" render={routeProps => {
                     console.log(this.state.books, this.state.genres)
@@ -133,15 +114,13 @@ class App extends React.Component
                 <Route exact path="/books/:id/view" render={routeProps => {
                     const { id } = routeProps.match.params;
                     const book = helpers.findBook(this.state.books, id)
-                    const genre = helpers.findBookGenre(this.state.genres, book)
                     console.log("Book", book)
-                    return <ViewBook book={book} genre={genre}/>
+                    return <ViewBook book={book} />
                 }} />
                 <Route exact path="/books/:id/edit" render={routeProps => {
                     const { id } = routeProps.match.params;
                     const book = helpers.findBook(this.state.books, id);
-                    const genre = helpers.findBookGenre(this.state.genres, book);
-                    return <EditBook book={book} genre={genre} />
+                    return <EditBook book={book} />
                 }} />
             </BookContext.Provider>
             }

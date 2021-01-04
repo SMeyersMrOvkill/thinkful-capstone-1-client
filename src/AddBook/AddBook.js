@@ -49,7 +49,7 @@ class AddBook extends React.Component
     }
 
     updateGenre(genre) {
-        this.setState({genre: {value: parseInt(genre), touched: true}});
+        this.setState({genre: {value: genre, touched: true}});
     }
 
     submit = (e) => {
@@ -104,9 +104,34 @@ class AddBook extends React.Component
                         <label htmlFor="genre">Genre: </label>
                         <select onChange={e => {this.updateGenre(e.target.value)}}>
                             <option value="0">Please select an option</option>
-                            {this.context.genres.map((genre) => {
-                                return <option key={genre.id} value={genre.id}>{genre.name}</option>
-                            })}
+                            {
+                                        [
+                                            'Action',
+                                            'Adventure',
+                                            'Classic',
+                                            'Comic/Graphic Novel',
+                                            'Mystery/Detective',
+                                            'Fantasy',
+                                            'Science Fiction',
+                                            'Historical Fiction',
+                                            'Horror',
+                                            'Literary Fiction',
+                                            'Romance',
+                                            'Short Story',
+                                            'Suspense/Thriller',
+                                            'Women\'s Fiction',
+                                            'Biography/Autobiography',
+                                            'Cookbook',
+                                            'Essay',
+                                            'History',
+                                            'Memoir',
+                                            'Poetry',
+                                            'Self-Help',
+                                            'True Crime',
+                                        ].map((genre) => {
+                                            return <option key={genre} value={genre}>{genre}</option>
+                                        })
+                            }
                         </select>
                     </div>
                     <div className="Form__form-group">
