@@ -1,5 +1,5 @@
 export default {
-    API_ENDPOINT: 'http://localhost:8080/api',
+    API_ENDPOINT: 'https://fathomless-bayou-15241.herokuapp.com/api',
     TOKEN_KEY: 'library-client-auth-token',
   }
   

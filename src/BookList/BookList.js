@@ -17,6 +17,10 @@ class BookList extends React.Component
         genreFilter: '*'
     }
 
+    randomRange(min, max) {
+        return Math.floor(Math.random() * (max - min) + min);
+    }
+
     onRatingFilterChanged(ratingFilter) {
         this.setState({ratingFilter: parseInt(ratingFilter)})
     }
@@ -33,12 +37,23 @@ class BookList extends React.Component
         return this.state.genreFilter === '*' || this.state.genreFilter === genre;
     }
 
+    findRandomBook = () => {
+        if(this.props.books.length === 0) {
+            return;
+        }
+        const num = this.randomRange(0, this.props.books.length);
+        const book = this.props.books[num];
+        console.log(num, book, this.props.books);
+        window.location = `/books/${book.id}/view`;
+    }
+
     render() {
         return (
             <div className="BookList">
                 <div className="BookList__toolbar">
                     <Link to="/books/add"><button>Add Book</button></Link>
-                    <Link to="/books/random"><button>Random Book</button></Link>
+                    <button onClick={this.findRandomBook}>Random Book</button>
+                    <br />
                     <label htmlFor="ratingFilter">Rating: </label>
                     <select
                         id="ratingFilter"
