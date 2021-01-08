@@ -1,9 +1,17 @@
 .Book {
-    margin-top: 10px;
+    margin-top: 15px;
     background-color: black;
     color: #c39ea0;
     width: 90%;
     border-radius: 15%;
     justify-content: center;
     text-align: center;
+}
+
+.Book p {
+    color: #c39ea0;
+}
+
+.Book button {
+    margin: 5px;
 }

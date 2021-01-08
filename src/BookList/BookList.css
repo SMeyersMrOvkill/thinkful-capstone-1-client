@@ -12,6 +12,13 @@
     border-radius: 15%;
     color: #fa255e;
     width: 85%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.BookList__toolbar button {
+    margin: 5px;
 }
 
 .BookList__list {

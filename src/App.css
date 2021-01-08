@@ -23,15 +23,13 @@ button {
 }
 
 select {
-    background-color: #c39ea0;
     min-height: 25px;
 }
 
 input {
-    background-color: #c39ea0;
     min-height: 20px;
 }
 
-textarea {
-    background-color: #c39ea0;
+textarea, input, select {
+    background-color: #dddddd;
 }
