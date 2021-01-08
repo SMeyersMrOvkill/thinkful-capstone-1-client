@@ -1,32 +1,33 @@
 body {
-    background-color: #F29559;
-    color: #202C39;
+    background-color: #f8e5e5;
+    color: #fa255e;
 }
 
 a {
-    color: #202C39;
+    color: #fa255e;
 }
 
 a:visited {
-    color: #202C39;
+    color: #fa255e;
 }
 
 a:hover {
-    color: #202C39;
+    color: #fa255e;
 }
 
 button {
-    background-color: #F2D492;
+    background-color: #fa255e;
+    color: #000000;
 }
 
 select {
-    background-color: #F2D492;
+    background-color: #c39ea0;
 }
 
 input {
-    background-color: #F2D492;
+    background-color: #c39ea0;
 }
 
 textarea {
-    background-color: #F2D492;
+    background-color: #c39ea0;
 }

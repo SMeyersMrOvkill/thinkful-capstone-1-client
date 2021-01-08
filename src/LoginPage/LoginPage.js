@@ -61,20 +61,21 @@ class LoginPage extends React.Component
             <h1>Log In</h1>
                 {!!this.state.error ? <div className="Form__error">{JSON.stringify(this.state.error)}</div> : ''}
                 <form>
-                    <div className="Form__form-control">
+                    <div className="Form__form-group">
                         <label htmlFor="user_name">User Name:</label>
                         <input 
                             id="user_name"
                             onChange={e => {this.usernameChanged(e.target.value)}} />
                     </div>
-                    <div className="Form__form-control">
+                    <div className="Form__form-group">
                         <label htmlFor="password">Password: </label>
                         <input 
                             id="password"
                             type="password"
                             onChange={e => {this.passwordChanged(e.target.value)}} />
                     </div>
-                    <div className="Form__form-control">
+                    <hr />
+                    <div className="Form__form-group">
                         <button 
                         disabled={!this.validateFields()}
                         onClick={this.handleSubmitJwtAuth}>Submit</button>
