@@ -15,6 +15,7 @@ import './App.css';
 import LoginPage from './LoginPage/LoginPage';
 import Home from './Home/Home';
 import RegisterPage from './RegisterPage/RegisterPage';
+import Nav from './Nav/Nav';
 
 class App extends React.Component 
 {
@@ -103,6 +104,7 @@ class App extends React.Component
               addBook: this.addBook,
               deleteBook: this.deleteBook
           }}>
+                <Nav />
                 <Route exact path="/" component={Home} />
                 <Route exact path="/login" component={LoginPage} />
                 <Route exact path="/register" component={RegisterPage} />
