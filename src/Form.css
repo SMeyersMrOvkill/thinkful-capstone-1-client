@@ -14,6 +14,10 @@ form {
     box-shadow: #333333 2px 2px;
 }
 
+form input, form textarea, form select {
+    margin: 5px;
+}
+
 .Form__form-group {
     display: flex;
     flex-direction: column;
