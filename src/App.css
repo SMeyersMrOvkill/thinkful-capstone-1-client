@@ -1,0 +1,32 @@
+body {
+    background-color: #F29559;
+    color: #202C39;
+}
+
+a {
+    color: #202C39;
+}
+
+a:visited {
+    color: #202C39;
+}
+
+a:hover {
+    color: #202C39;
+}
+
+button {
+    background-color: #F2D492;
+}
+
+select {
+    background-color: #F2D492;
+}
+
+input {
+    background-color: #F2D492;
+}
+
+textarea {
+    background-color: #F2D492;
+}

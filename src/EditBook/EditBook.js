@@ -76,6 +76,10 @@ class EditBook extends React.Component
         this.props.history.push('/books');
     }
 
+    cancel = () => {
+        this.props.history.push('/books');
+    }
+
     deleteBook = () => {
         this.context.deleteBook(this.props.book);
     }
@@ -86,10 +90,7 @@ class EditBook extends React.Component
             {({books, genres}) => {
                 return (
                     <div className="Form">
-                        <Link to="/books/">
-                            <button>Cancel</button>
-                        </Link>
-                        <button onClick={this.deleteBook}>Delete</button>
+                        <h1>Change a book</h1>
                         <form>
                             <div className="Form__form-group">
                                 <label htmlFor="name">Name: </label>
@@ -167,6 +168,14 @@ class EditBook extends React.Component
                             <hr />
                             <div className="Form__form-group">
                                 <button onClick={this.submit}>Submit</button>
+                            </div>
+                            <hr />
+                            <div className="Form__form-group">
+                                <button onClick={this.cancel}>Cancel</button>
+                            </div>
+                            <hr />
+                            <div className="Form__form-group">
+                                <button onClick={this.deleteBook}>Delete</button>
                             </div>
                         </form>
                     </div>

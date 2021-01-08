@@ -58,6 +58,7 @@ class LoginPage extends React.Component
     render() {
         return (
             <div className="Form">
+            <h1>Log In</h1>
                 {!!this.state.error ? <div className="Form__error">{JSON.stringify(this.state.error)}</div> : ''}
                 <form>
                     <div className="Form__form-control">

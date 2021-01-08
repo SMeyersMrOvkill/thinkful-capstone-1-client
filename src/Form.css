@@ -7,10 +7,11 @@
 }
 
 form {
-    background-color: black;
-    color: white;
+    background-color: #B8B08D;
+    color: #202C39;
     width: 350px;
     padding: 10px;
+    box-shadow: #F2D492 5px 5px;
 }
 
 .Form__form-group {
