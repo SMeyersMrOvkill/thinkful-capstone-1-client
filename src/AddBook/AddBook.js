@@ -137,7 +137,7 @@ class AddBook extends React.Component
                     </div>
                     <hr />
                     <div className="Form__form-group">
-                        <button onClick={this.cancel}>Cancel</button>
+                    <button className="Form__button-cancel" onClick={this.cancel}>Cancel</button>
                     </div>
                     <hr />
                     <div className="Form__form-group">

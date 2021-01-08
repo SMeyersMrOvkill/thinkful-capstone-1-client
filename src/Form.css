@@ -18,3 +18,17 @@ form {
     display: flex;
     flex-direction: column;
 }
+
+.Form__button-cancel {
+    background-color: grey;
+}
+
+.Form__button-danger {
+    background-color: red;
+}
+
+@media (min-width: 400px) {
+    form {
+        width: 350px;
+    }
+}
