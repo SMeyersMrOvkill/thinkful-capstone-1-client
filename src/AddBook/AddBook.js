@@ -52,6 +52,10 @@ class AddBook extends React.Component
         this.setState({genre: {value: genre, touched: true}});
     }
 
+    cancel = () => {
+        this.props.history.push("/books");
+    }
+
     submit = (e) => {
         e.preventDefault();
         this.context.addBook({
@@ -67,9 +71,6 @@ class AddBook extends React.Component
     render() {
         return (
             <div className="Form">
-                <Link to="/books/">
-                    <button>Cancel</button>
-                </Link>
                 <form>
                     <div className="Form__form-group">
                         <label htmlFor="name">Name: </label>
@@ -134,6 +135,11 @@ class AddBook extends React.Component
                             }
                         </select>
                     </div>
+                    <hr />
+                    <div className="Form__form-group">
+                        <button onClick={this.cancel}>Cancel</button>
+                    </div>
+                    <hr />
                     <div className="Form__form-group">
                         <button onClick={this.submit}>Submit</button>
                     </div>

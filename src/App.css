@@ -1,5 +1,5 @@
 body {
-    background-color: #f8e5e5;
+    background-color: #dddddd;
     color: #fa255e;
     margin: 0;
 }
@@ -19,14 +19,17 @@ a:hover {
 button {
     background-color: #fa255e;
     color: #000000;
+    height: 30px;
 }
 
 select {
     background-color: #c39ea0;
+    min-height: 25px;
 }
 
 input {
     background-color: #c39ea0;
+    min-height: 20px;
 }
 
 textarea {
