@@ -24,7 +24,7 @@ class App extends React.Component
       books: [],
   }
 
-  getAllBooks() {
+  getAllBooks = () => {
     fetch(`${config.API_ENDPOINT}/books`, {
         method: 'GET',
         headers: {
@@ -48,8 +48,6 @@ class App extends React.Component
     }
 
     componentDidMount() {
-        this.getAllBooks();
-        
     }
 
     updateBook = (book) => {
@@ -102,7 +100,9 @@ class App extends React.Component
               books: this.state.books,
               updateBook: this.updateBook,
               addBook: this.addBook,
-              deleteBook: this.deleteBook
+              deleteBook: this.deleteBook,
+              getAllBooks: this.getAllBooks,
+
           }}>
                 <Nav />
                 <Route exact path="/" component={Home} />

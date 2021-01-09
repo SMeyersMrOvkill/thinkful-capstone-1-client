@@ -10,19 +10,19 @@ class BookList extends React.Component
     static defaultProps = {
         books: [],
         genres: []
-    }
+    };
 
     state = {
         ratingFilter: 0,
         genreFilter: '*'
-    }
+    };
 
     randomRange(min, max) {
         return Math.floor(Math.random() * (max - min) + min);
     }
 
     onRatingFilterChanged(ratingFilter) {
-        this.setState({ratingFilter: parseInt(ratingFilter)})
+        this.setState({ratingFilter: parseInt(ratingFilter)});
     }
 
     isRatingValid = (rating) => {
@@ -45,6 +45,10 @@ class BookList extends React.Component
         const book = this.props.books[num];
         console.log(num, book, this.props.books);
         window.location = `/books/${book.id}/view`;
+    }
+
+    componentDidMount() {
+        this.context.getAllBooks();
     }
 
     render() {
@@ -107,7 +111,7 @@ class BookList extends React.Component
                     {this.props.books.map((book) => {
                         let genre = this.props.genres.find((genre) => {
                             if(genre.id === book.genre) {
-                                return genre
+                                return genre;
                             }
                         });
                         if(this.isRatingValid(book.rating)) {

@@ -1,35 +1,37 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import BookContext from '../BookContext';
-import { Link, withRouter } from 'react-router-dom';
 
 import '../Form.css';
 
-class AddBook extends React.Component 
-{
+class AddBook extends React.Component {
 
     static contextType = BookContext;
 
-    state = {
-        name: {
-            value: '',
-            touched: false,
-        },
-        description: {
-            value: '',
-            touched: false
-        },
-        rating: {
-            value: 0,
-            touched: false
-        },
-        author: {
-            value: '',
-            touched: false
-        },
-        genre: {
-            value: 0,
-            touched: false
-        }
+    constructor() {
+        super();
+        this.state = {
+            name: {
+                value: '',
+                touched: false,
+            },
+            description: {
+                value: '',
+                touched: false,
+            },
+            rating: {
+                value: 0,
+                touched: false,
+            },
+            author: {
+                value: '',
+                touched: false,
+            },
+            genre: {
+                value: 0,
+                touched: false,
+            },
+        };
     }
 
     updateName(name) {

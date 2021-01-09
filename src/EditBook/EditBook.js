@@ -1,19 +1,15 @@
 import React from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 import BookContext from '../BookContext';
 
 import '../Form.css';
 
-class EditBook extends React.Component
-{
-
+class EditBook extends React.Component {
     static defaultProps = {
         book: {},
     };
-
     static contextType = BookContext;
-
     state = {
         name: {
             value: '',
