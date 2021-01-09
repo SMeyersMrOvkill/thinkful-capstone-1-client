@@ -88,7 +88,7 @@ class AddBook extends React.Component {
                     </div>
                     <div className="Form__form-group">
                         <label htmlFor="rating">Rating: </label>
-                        <select onChange={e => {this.updateRating(e.target.value)}}>
+                        <select onChange={e => {this.updateRating(e.target.value)}} id="rating">
                             <option value="0">Please select an option</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -105,7 +105,7 @@ class AddBook extends React.Component {
                     </div>
                     <div className="Form__form-group">
                         <label htmlFor="genre">Genre: </label>
-                        <select onChange={e => {this.updateGenre(e.target.value)}}>
+                        <select onChange={e => {this.updateGenre(e.target.value)}} id="genre">
                             <option value="0">Please select an option</option>
                             {
                                         [

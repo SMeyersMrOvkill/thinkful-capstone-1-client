@@ -24,6 +24,9 @@ class App extends React.Component
       books: [],
   }
 
+  /**
+   * Make a request to the api at /books, check for errors, and add all books to state.
+   */
   getAllBooks = () => {
     fetch(`${config.API_ENDPOINT}/books`, {
         method: 'GET',
@@ -34,7 +37,6 @@ class App extends React.Component
         }).then(books => {
         return books.json();
         }).then(data => {
-            //console.log(data);
             if(data.hasOwnProperty('error')) {
                 this.setState({error: data.error});
                 if(data.error === "Unauthorized request") {
@@ -42,14 +44,14 @@ class App extends React.Component
                 }
             }
             console.log({books: data});
-            //this.setState(books: [...data], error: {}});
             this.setState({error: '', books: data});
         })
     }
 
-    componentDidMount() {
-    }
-
+    /**
+     * Make a request to /books/update with the updated book
+     * @param {book} book 
+     */
     updateBook = (book) => {
         fetch(`${config.API_ENDPOINT}/books/update`, {
             method: 'POST',
@@ -64,6 +66,10 @@ class App extends React.Component
         });
     }
 
+    /**
+     * Make a request to /books/create and redirect to /books
+     * @param {book} book 
+     */
     addBook = (book) => {
         fetch(`${config.API_ENDPOINT}/books/create`, {
             method: 'POST',
@@ -78,6 +84,10 @@ class App extends React.Component
         });
     }
 
+    /**
+     * Make a request to /books/:bookId/delete and redirect to /books
+     * @param {book} book 
+     */
     deleteBook = (book) => {
         fetch(`${config.API_ENDPOINT}/books/${book.id}/delete`, {
             method: 'DELETE',

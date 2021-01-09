@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 import Book from '../Book/Book';
 import BookContext from '../BookContext';
+import TokenService from '../services/token-service';
 
 import './BookList.css';
 
@@ -16,10 +17,16 @@ class BookList extends React.Component
         genres: []
     };
 
-    state = {
-        ratingFilter: 0,
-        genreFilter: '*'
-    };
+    constructor() {
+        super();
+        this.state = {
+            ratingFilter: 0,
+            genreFilter: '*'
+        };
+        if(!TokenService.hasAuthToken()) {
+            window.location = "/login";
+        }
+    }
 
     randomRange(min, max) {
         return Math.floor(Math.random() * (max - min) + min);

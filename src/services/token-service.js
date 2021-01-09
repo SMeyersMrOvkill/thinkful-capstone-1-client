@@ -1,31 +1,31 @@
 import jwtDecode from 'jwt-decode'
 import config from '../config'
 
-let _timeoutId
-const _TEN_SECONDS_IN_MS = 10000
+let _timeoutId;
+const _TEN_SECONDS_IN_MS = 10000;
 
 const TokenService = {
   saveAuthToken(token) {
-    window.localStorage.setItem(config.TOKEN_KEY, token)
+    window.localStorage.setItem(config.TOKEN_KEY, token);
   },
   getAuthToken() {
-    return window.localStorage.getItem(config.TOKEN_KEY)
+    return window.localStorage.getItem(config.TOKEN_KEY);
   },
   clearAuthToken() {
-    console.info('clearing the auth token')
-    window.localStorage.removeItem(config.TOKEN_KEY)
+    console.info('clearing the auth token');
+    window.localStorage.removeItem(config.TOKEN_KEY);
   },
   hasAuthToken() {
-    return !!TokenService.getAuthToken()
+    return !!TokenService.getAuthToken();
   },
   makeBasicAuthToken(userName, password) {
-    return window.btoa(`${userName}:${password}`)
+    return window.btoa(`${userName}:${password}`);
   },
   parseJwt(jwt) {
-    return jwtDecode(jwt)
+    return jwtDecode(jwt);
   },
   readJwtToken() {
-    return TokenService.parseJwt(TokenService.getAuthToken())
+    return TokenService.parseJwt(TokenService.getAuthToken());
   },
   _getMsUntilExpiry(payload) {
     /*
@@ -48,7 +48,7 @@ const TokenService = {
     _timeoutId = setTimeout(callback, msUntilExpiry - _TEN_SECONDS_IN_MS)
   },
   clearCallbackBeforeExpiry() {
-    clearTimeout(_timeoutId)
+    clearTimeout(_timeoutId);
   },
 }
 
