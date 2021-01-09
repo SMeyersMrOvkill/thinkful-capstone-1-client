@@ -2,11 +2,15 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import Book from '../Book/Book';
+import BookContext from '../BookContext';
 
 import './BookList.css';
 
 class BookList extends React.Component
 {
+
+    static contextType = BookContext;
+
     static defaultProps = {
         books: [],
         genres: []

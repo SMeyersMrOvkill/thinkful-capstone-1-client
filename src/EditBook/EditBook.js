@@ -76,7 +76,8 @@ class EditBook extends React.Component {
         this.props.history.push('/books');
     }
 
-    deleteBook = () => {
+    deleteBook = (e) => {
+        e.preventDefault();
         this.context.deleteBook(this.props.book);
     }
 
