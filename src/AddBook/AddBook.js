@@ -1,6 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import BookContext from '../BookContext';
+import TokenService from '../services/token-service';
 
 import '../Form.css';
 
@@ -32,6 +33,9 @@ class AddBook extends React.Component {
                 touched: false,
             },
         };
+        if(!TokenService.hasAuthToken()) {
+            window.location = "/login";
+        }
     }
 
     updateName(name) {

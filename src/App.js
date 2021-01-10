@@ -43,7 +43,6 @@ class App extends React.Component
                     this.setState({error: <LoginPage />})
                 }
             }
-            console.log({books: data});
             this.setState({error: '', books: data});
         })
     }
@@ -61,7 +60,6 @@ class App extends React.Component
             },
             body: JSON.stringify(book)
         }).then(resp => resp.json()).then(data => {
-            console.log(data);
             this.getAllBooks();
         });
     }
@@ -96,7 +94,6 @@ class App extends React.Component
                 'authorization': `bearer ${TokenService.getAuthToken()}`
             }
         }).then(resp => resp.json()).then(data => {
-            console.log(data);
             window.location = "/books";
             this.getAllBooks();
         });
@@ -120,13 +117,11 @@ class App extends React.Component
                 <Route exact path="/register" component={RegisterPage} />
                 <Route exact path="/books/add" component={AddBook} />
                 <Route exact path="/books" render={routeProps => {
-                    console.log(this.state.books, this.state.genres)
                     return <BookList books={this.state.books} genres={this.state.genres} />;
                 }} />
                 <Route exact path="/books/:id/view" render={routeProps => {
                     const { id } = routeProps.match.params;
                     const book = helpers.findBook(this.state.books, id)
-                    console.log("Book", book)
                     return <ViewBook book={book} />
                 }} />
                 <Route exact path="/books/:id/edit" render={routeProps => {

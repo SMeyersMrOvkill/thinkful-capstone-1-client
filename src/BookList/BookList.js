@@ -54,7 +54,6 @@ class BookList extends React.Component
         }
         const num = this.randomRange(0, this.props.books.length);
         const book = this.props.books[num];
-        console.log(num, book, this.props.books);
         window.location = `/books/${book.id}/view`;
     }
 

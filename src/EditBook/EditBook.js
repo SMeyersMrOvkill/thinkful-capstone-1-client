@@ -2,6 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 
 import BookContext from '../BookContext';
+import TokenService from '../services/token-service';
 
 import '../Form.css';
 
@@ -10,21 +11,28 @@ class EditBook extends React.Component {
         book: {},
     };
     static contextType = BookContext;
-    state = {
-        name: {
-            value: '',
-        },
-        description: {
-            value: '',
-        },
-        rating: {
-            value: 1,
-        },
-        author: {
-            value: ''
-        },
-        genre: {
-            value: 'Action',
+
+    constructor() {
+        super();
+        this.state = {
+            name: {
+                value: '',
+            },
+            description: {
+                value: '',
+            },
+            rating: {
+                value: 1,
+            },
+            author: {
+                value: '',
+            },
+            genre: {
+                value: 'Action',
+            },
+        }
+        if(!TokenService.hasAuthToken()) {
+            window.location = "/login";
         }
     }
 
